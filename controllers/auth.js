@@ -10,7 +10,7 @@ const signup = (req, res) => {
     const errors = validationResult(req)
 
     if (!errors.isEmpty()) {
-        return res.status(422).json({
+        return res.status(200).json({
             error: errors.array()[0].msg
         })
     }
@@ -34,20 +34,20 @@ const signin = (req, res) => {
     const errors = validationResult(req);
 
     if (!errors.isEmpty()) {
-        return res.status(422).json({
+        return res.status(201).json({
             error: errors.array()[0].msg
         })
     }
 
     User.findOne({email}, (err, user) => {
         if (err || !user) {
-            return res.status(400).json({
+            return res.status(201).json({
                 error: "User email does not exists"
             });
         }
 
         if(!user.authenticate(password)) {
-            return res.status(401).json({
+            return res.status(201).json({
                 error: "Email and password do not match"
             });
         }
@@ -77,7 +77,7 @@ const signout = (req, res) => {
 const isSignedIn = expressJwt({
     secret: process.env.SECRET,
     userProperty: "auth"
-})
+});
 
 //Custom Middleware
 const isAuthenticated = (req, res, next) => {

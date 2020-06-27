@@ -10,6 +10,7 @@ const app = express();
 //My Routes
 const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/user');
+const leadRoutes = require('./routes/lead');
 
 // Mongo Db connection
 mongoose.connect(process.env.DATABASE, {
@@ -34,6 +35,8 @@ app.use(cors());
 app.use("/api", authRoutes);
 
 app.use("/api", userRoutes);
+
+app.use("/api", leadRoutes);
 
 
 
