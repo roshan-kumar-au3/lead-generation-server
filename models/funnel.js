@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-const LeadSchema = new Schema({
+const FunnelSchema = new Schema({
     name: {
         type: String,
         trim: true,
@@ -54,7 +54,13 @@ const LeadSchema = new Schema({
     contacted: {
         type: Boolean,
         default: 'no'
-    }
+    },
+    funnelStage: {
+        type: String,
+        trim: true,
+        default: 'awareness',
+        maxlength: 32
+    },
 },{ timestamps: true });
 
-module.exports = mongoose.model("Lead", LeadSchema);
+module.exports = mongoose.model("Funnel", FunnelSchema);
