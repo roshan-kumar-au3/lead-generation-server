@@ -76,7 +76,8 @@ const signout = (req, res) => {
 //Protected Routes checking token using express-jwt
 const isSignedIn = expressJwt({
     secret: process.env.SECRET,
-    userProperty: "auth"
+    userProperty: "auth",
+    algorithms: ['HS256']
 });
 
 //Custom Middleware
