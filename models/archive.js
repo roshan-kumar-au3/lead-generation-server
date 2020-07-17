@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-const LeadSchema = new Schema({
+const ArchiveSchema = new Schema({
     name: {
         type: String,
         trim: true,
@@ -12,8 +12,7 @@ const LeadSchema = new Schema({
     email: {
         type: String,
         trim: true,
-        required: true,
-        unique: true
+        required: true
     },
     phone: {
         type: String,
@@ -77,4 +76,4 @@ const LeadSchema = new Schema({
     }
 },{ timestamps: true });
 
-module.exports = mongoose.model("Lead", LeadSchema);
+module.exports = mongoose.model("Archive", ArchiveSchema);

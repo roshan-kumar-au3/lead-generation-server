@@ -11,6 +11,7 @@ const app = express();
 const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/user');
 const leadRoutes = require('./routes/lead');
+const funnelRoutes = require('./routes/funnel');
 
 // Mongo Db connection
 mongoose.connect(process.env.DATABASE, {
@@ -38,7 +39,7 @@ app.use("/api", userRoutes);
 
 app.use("/api", leadRoutes);
 
-
+app.use("/api", funnelRoutes);
 
 // Port
 const port = process.env.PORT || 8000;

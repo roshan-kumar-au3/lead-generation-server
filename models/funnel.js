@@ -21,11 +21,20 @@ const FunnelSchema = new Schema({
         required: true,
         maxlength: 32
     },
+    phone: {
+        type: String,
+        trim: true,
+        required: true
+    },
     description: {
         type: String,
         trim: true,
         required: true,
         maxlength: 2000
+    },
+    remarks: {
+        type: String,
+        trim: true
     },
     roleInOrganisation: {
         type: String,
@@ -55,12 +64,23 @@ const FunnelSchema = new Schema({
         type: Boolean,
         default: 'no'
     },
+    updatedby: {
+        type: String,
+        trim: true
+    },
     funnelStage: {
         type: String,
+        enum: ["awareness", "interest", "consideration", "evaluation"],
         trim: true,
-        default: 'awareness',
-        maxlength: 32
+        default: 'awareness'
     },
+    followups: {
+        type: Boolean,
+        default: 'no'
+    },
+    followupTime: {
+        type: Date
+    }
 },{ timestamps: true });
 
 module.exports = mongoose.model("Funnel", FunnelSchema);
